@@ -1,0 +1,45 @@
+public class GetDataFromMsAccess {
+    
+    static Connection conn=null,connOra=null;
+    static PreparedStatement statement=null,oraIn=null;
+    static ResultSet rs1=null,rs2=null; 
+    
+    public static void main(String arg[]){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            conn=DriverManager.getConnection("jdbc:ucanaccess://C:\\Program Files (x86)\\ZKTeco\\att2000.mdb");
+            Class.forName("oracle.jdbc.driver.OracleDriver"); 
+           //"jdbc:oracle:thin:@localhost:1521:zktbiotime","zktadmin","Admin007
+            connOra=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:payroll","payroll","payroll");
+//            
+            statement=connOra.prepareStatement("select * from INOUT");
+            rs1=statement.executeQuery();
+            
+            oraIn=conn.prepareStatement("select * from checkinout");
+            rs2=oraIn.executeQuery();
+            
+            
+            while(rs1.next()){
+                System.out.print(rs1.getString(1));
+                System.out.println("----- "+rs1.getString(2));
+            }
+
+            String insertOraDataBaseIntime="insert into (in_time) values (";
+            String insertOraDataBaseOuttime="insert into (out_time) values (";
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss a");
+            
+            while(rs2.next()){
+                Date date=rs2.getTimestamp(2);
+                String strDate= formatter.format(date);
+                System.out.println(strDate);
+                String onlyDate=strDate.substring(0, 10);
+                System.out.println(onlyDate);
+                String onlyTime=strDate.substring(11, 22);
+                System.out.println(onlyTime+"--"+onlyTime.substring(9, 11))
+            }
+            
+        }catch(Exception e){}
+
+    }
+    
+}
