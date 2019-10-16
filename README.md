@@ -19,3 +19,12 @@ URL: https://netbeans.org/downloads/8.2/
 
 # My SQL JDBC Driver for Connection with SQL Database
 URL: https://dev.mysql.com/downloads/connector/j/5.1.html
+
+# Ucanaccess (  Access Driver For Java )
+URL: http://ucanaccess.sourceforge.net/site.html
+
+# POI ( Poi Driver For Write/Read Data In Ms Office From Java )
+URL: http://poi.apache.org/download.html
+
+# odbj Driver For Connection Oracle Database With Java
+URL: https://www.oracle.com/database/technologies/develop-java-apps-using-jdbc.html
