@@ -1,0 +1,4 @@
+@echo off
+setlocal EnableExtensions DisableDelayedExpansion
+ie4uinit.exe -show
+endlocal
